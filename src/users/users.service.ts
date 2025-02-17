@@ -28,4 +28,10 @@ export class UsersService {
     const findUser = this.userDetails.filter((user) => user.id === id);
     return findUser;
   }
+
+  findByAge(age: number) {
+    let users = this.findAll();
+    users = users.filter((user) => user.age === age);
+    return users;
+  }
 }

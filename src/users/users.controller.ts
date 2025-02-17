@@ -25,16 +25,11 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Query('age', ParseIntPipe) age: number) {
+    if(age){
+      return this.userService.findByAge(age)
+    }
     return this.userService.findAll();
-  }
-
-  @Get()
-  findByAge(@Query('age', ParseIntPipe) age: number) {
-    const data: Users[] = this.userService.findAll();
-
-    const filteredData: Users[] = data.filter((user) => user.age === age);
-    return filteredData;
   }
 
   @Get(':id')
