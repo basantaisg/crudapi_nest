@@ -17,6 +17,10 @@ export class UsersService {
       email,
       age,
     };
-    this.userDetails.push(User);
+    return this.userDetails.push(User);
+  }
+
+  findAll() {
+    return this.userDetails;
   }
 }

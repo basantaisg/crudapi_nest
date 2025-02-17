@@ -13,6 +13,7 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
+import { Users } from './UserModel/User.model';
 
 @Controller('users')
 export class UsersController {
@@ -24,11 +25,17 @@ export class UsersController {
   }
 
   @Get()
-  findAll(@Query('age', ParseIntPipe) age: number): string {
+  findAll() {
+    return this.userService.findAll();
+  }
+
+  @Get()
+  findByAge(@Query('age', ParseIntPipe) age?: number) {
     if (age) {
-      return 'Age';
+      const data: Users[] = this.userService.findAll();
+      const filteredData: Users[] = data.filter((user) => user.age === age);
+      return filteredData;
     }
-    return 'All users';
   }
 
   @Get(':id')
