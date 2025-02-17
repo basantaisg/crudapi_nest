@@ -23,4 +23,9 @@ export class UsersService {
   findAll() {
     return this.userDetails;
   }
+
+  findOne(id: string) {
+    const findUser = this.userDetails.filter((user) => user.id === id);
+    return findUser;
+  }
 }

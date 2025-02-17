@@ -30,17 +30,16 @@ export class UsersController {
   }
 
   @Get()
-  findByAge(@Query('age', ParseIntPipe) age?: number) {
-    if (age) {
-      const data: Users[] = this.userService.findAll();
-      const filteredData: Users[] = data.filter((user) => user.age === age);
-      return filteredData;
-    }
+  findByAge(@Query('age', ParseIntPipe) age: number) {
+    const data: Users[] = this.userService.findAll();
+
+    const filteredData: Users[] = data.filter((user) => user.age === age);
+    return filteredData;
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `User detail of id: ${id}`;
+    return this.userService.findOne(id);
   }
 
   @Put(':id')
