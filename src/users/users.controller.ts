@@ -19,7 +19,7 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
   // ?role=Value
   @Get()
-  findAll(@Query('role') role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
+  findAll(@Query('role') role?: CreateUserDto['role']) {
     return this.usersService.findAll(role);
   }
 

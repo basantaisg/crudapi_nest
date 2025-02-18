@@ -44,7 +44,7 @@ export class UsersService {
     },
   ];
 
-  findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
+  findAll(role?: CreateUserDto['role']) {
     if (role) {
       return this.users.filter((user) => user.role === role);
     }
