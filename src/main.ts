@@ -7,6 +7,8 @@ async function bootstrap() {
     abortOnError: false,
   });
   app.set('query parser', 'extended');
+  app.enableCors();
+  app.setGlobalPrefix('api');
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
